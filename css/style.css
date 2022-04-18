@@ -15,6 +15,10 @@
   box-sizing: border-box;
 }
 
+.button-header {
+  display: none;
+}
+
 body {
   font-family: 'Poppins', sans-serif;
   background-color: var(--background-body);
@@ -22,6 +26,7 @@ body {
   max-width: 1400px;
   margin: 0 auto;
   padding: 15px 30px;
+  min-width: 340px;
 }
 
 header {
@@ -32,13 +37,13 @@ header {
 
 #logo {
   flex-direction: column;
-
 }
 
 #logo h1 {
-  font-size: 18px;
+  font-size: 16px;
   line-height: 30px;
   font-weight: 200;
+  color: var(--text-white)
 }
 
 header .menu-section #navegation ul {
@@ -63,7 +68,7 @@ header .menu-section #navegation ul li a:hover {
   transition: 0.2s all;
 }
 
-header .menu-section #navegation ul li:last-child a {
+header .menu-section #navegation ul li:last-child a, .button-header {
   border: 2px solid var(--text-blue);
   padding: 8px 25px;
   border-radius: 15px;
@@ -127,6 +132,8 @@ main aside form input::placeholder {
   color: var(--text-form);
 }
 
+
+
 main aside form [type="submit"] {
   height: 50px;
   width: 35%;
@@ -135,18 +142,21 @@ main aside form [type="submit"] {
   color: var(--text-white);
   font-weight: 700;
   border: none;
+  align-self: center;
+  transition: 0.2s background;
 }
 
-main aside form [type="submit"]:hover {
-
+main aside form [type="submit"]:hover, .button-header:hover {
   background-color: var(--hover-btn);
-
-}
-
-main aside form [type="submit"]:hover {
   cursor: pointer;
+
 }
 
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 /* - - - - - RESPONSIVIDADE - - - - - - */
 
@@ -235,11 +245,165 @@ main aside form [type="submit"]:hover {
     display: none;
   }
 
+  .menu-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
 
+
+
+  /* ----- Menu Toggle ----- */
+  .menu-toggle .one,
+  .menu-toggle .two,
+  .menu-toggle .three {
+    background-color: var(--text-blue);
+    height: 3px;
+    width: 100%;
+    margin: 6px auto;
+    transition: 0.2s;
+  }
+
+  .menu-toggle:hover .one,
+  .menu-toggle:hover .two,
+  .menu-toggle:hover .three {
+    background-color: var(--text-white);
+  }
+
+  .menu-toggle {
+    width: 40px;
+    height: 30px;
+    cursor: pointer;
+  }
+
+  .menu-section.on {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: var(--background-body);
+    width: 100vw;
+    height: 100vh;
+    z-index: 10;
+  }
+
+  header .menu-section.on #navegation ul li:not(:last-child) {
+    display: flex;
+  }
+
+  header .menu-section.on #navegation ul li:last-child {
+    display: none;
+  }
+
+  .menu-section.on .menu-toggle {
+    position: absolute;
+    right: 47px;
+    top: 30px;
+  }
+
+  header .menu-section.on #navegation ul {
+    flex-direction: column;
+  }
+
+  header .menu-section.on #navegation ul li a {
+    font-size: 36px;
+  }
+
+  /* --- X do menu toggle --- */
+  .menu-section.on .menu-toggle .one {
+    transform: rotate(45deg) translate(7px, 7px);
+  }
+
+  .menu-section.on .menu-toggle .two {
+    opacity: 0;
+  }
+
+  .menu-section.on .menu-toggle .three {
+    transform: rotate(-45deg) translate(5px, -7px);
+  }
 }
 
 /* - - - - - Mobile Grande - - - -  */
-@media(max-width: 600px) {}
+@media(max-width: 620px) {
+  header .menu-section #navegation ul li:last-child a {
+    font-size: 13px;
+  }
+
+  main aside h2 {
+    font-size: 48px;
+    line-height: 60px;
+  }
+
+  main aside p {
+    font-size: 14px;
+  }
+
+  main aside form [type="submit"] {
+    height: 50px;
+    width: 50%;
+    align-self: center;
+  }
+
+  header .menu-section #navegation ul li:last-child {
+    display: none;
+  }
+
+  .buttons {
+    justify-content: space-between;
+  }
+
+  .button-header {
+    display: inline-block;
+    text-decoration: none;
+    color: var(--text-white);
+    margin-top: 20px;
+
+    font-size: 14px;
+    transition: 0.2s background;
+    text-align: center;
+  }
+
+  main aside form [type="submit"] {
+    height: 50px;
+    width: 40%;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 14px;
+  }
+}
+
+@media(max-width: 536px) {
+  main aside h2 {
+    text-align: center;
+  }
+
+}
 
 /* - - - - - Mobile Pequeno - - - - */
-@media(max-width: 440px) {}
+@media(max-width: 440px) {
+  main aside h2 {
+    font-size: 38px;
+    line-height: 60px;
+  }
+
+  .buttons {
+    flex-direction: column;
+  }
+
+  .button-header {
+    width: 90%;
+    font-size: 14px;
+  }
+
+  main aside form [type="submit"] {
+    height: 50px;
+    width: 90%;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 14px;
+  }
+
+}
