@@ -4,6 +4,7 @@
   --primary-font: 'Poppins', sans-serif;
   --background-body: #222222;
   --text-white: #ffffff;
+  --text-form: #aeaeae;
   --text-blue: #840ec9;
   --hover-btn: #620a95;
 }
@@ -18,7 +19,7 @@ body {
   font-family: 'Poppins', sans-serif;
   background-color: var(--background-body);
   color: var(--text-white);
-  max-width: 1300px;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 15px 30px;
 }
@@ -35,46 +36,47 @@ header {
 }
 
 #logo h1 {
+  font-size: 18px;
   line-height: 30px;
   font-weight: 200;
 }
 
-header #navegation ul {
+header .menu-section #navegation ul {
   list-style: none;
   display: flex;
   align-items: center;
   gap: 40px;
 }
 
-header #navegation ul li {
+header .menu-section #navegation ul li {
   display: inline-block;
 }
 
 
-header #navegation ul li a {
+header .menu-section #navegation ul li a {
   text-decoration: none;
   color: var(--text-white);
 }
 
-header #navegation ul li a:hover {
+header .menu-section #navegation ul li a:hover {
   color: var(--text-blue);
   transition: 0.2s all;
 }
 
-header #navegation ul li:last-child a {
+header .menu-section #navegation ul li:last-child a {
   border: 2px solid var(--text-blue);
   padding: 8px 25px;
   border-radius: 15px;
 }
 
-header #navegation ul li:last-child a:hover {
+header .menu-section #navegation ul li:last-child a:hover {
   background-color: var(--text-blue);
   color: var(--text-white);
 }
 
 main {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
   margin-top: 50px;
   line-height: 30px;
@@ -104,7 +106,7 @@ main article img {
 main aside form {
   display: flex;
   flex-direction: column;
-  width: 70%;
+  width: 90%;
 }
 
 main aside form input {
@@ -122,12 +124,12 @@ main aside form input:focus {
 }
 
 main aside form input::placeholder {
-  color: var(--text-white);
+  color: var(--text-form);
 }
 
 main aside form [type="submit"] {
   height: 50px;
-  width: 50%;
+  width: 35%;
   border-radius: 20px;
   background-color: var(--text-blue);
   color: var(--text-white);
@@ -144,3 +146,100 @@ main aside form [type="submit"]:hover {
 main aside form [type="submit"]:hover {
   cursor: pointer;
 }
+
+
+/* - - - - - RESPONSIVIDADE - - - - - - */
+
+/* - - - - - Portátil L - - - - - - */
+@media(max-width: 1200px) {
+  main article img {
+    width: 500px;
+  }
+
+  main aside h2 {
+    font-size: 48px;
+    line-height: 60px;
+  }
+
+  main aside p {
+    font-size: 15px;
+    max-width: 450px;
+  }
+}
+
+/* - - - - - Portátil - - - - - - - */
+@media(max-width: 1024px) {
+  main article img {
+    width: 400px;
+  }
+
+  main aside h2 {
+    font-size: 42px;
+    line-height: 60px;
+  }
+
+  main aside p {
+    font-size: 14px;
+    max-width: 400px;
+  }
+
+  header .menu-section #navegation ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+  }
+
+  header .menu-section #navegation ul li {
+    display: inline-block;
+  }
+
+  header .menu-section #navegation ul li a {
+    font-size: 15px;
+  }
+
+}
+
+/* - - - - - Tablet - - - - - - - - */
+@media(max-width: 880px) {
+  main {
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  main article {
+    order: -1;
+  }
+
+  main article img {
+    width: 300px;
+  }
+
+  main aside h2 {
+    font-size: 56px;
+    line-height: 60px;
+  }
+
+  main aside p {
+    max-width: 500px;
+    margin: 30px 0 15px 0;
+  }
+
+  main aside form [type="submit"] {
+    height: 50px;
+    width: 50%;
+    align-self: center;
+  }
+
+  header .menu-section #navegation ul li:not(:last-child) {
+    display: none;
+  }
+
+
+}
+
+/* - - - - - Mobile Grande - - - -  */
+@media(max-width: 600px) {}
+
+/* - - - - - Mobile Pequeno - - - - */
+@media(max-width: 440px) {}
